@@ -1,30 +1,38 @@
 import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { JobRepository } from './jobs.repository';
 import { JobDto } from './jobs.dto';
 
 @Controller('jobs')
 export class JobsController {
+  constructor(
+    @InjectRepository(JobRepository) private readonly jobRepository: JobRepository,
+  ) {}
+
+
   @Get()
-  findAll(): string {
-    return 'This action returns all jobs';
+  findAll() {
+    return this.jobRepository.find();
   }
 
   @Post()
   create(@Body() jobDto: JobDto) {
-      return jobDto;
+      return this.jobRepository.createDog(jobDto)
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-      return `we get the dog with the id ${id}`;
+    return this.jobRepository.findOneJob(id);
   }
 
+
   @Put(':id')
-  update(@Param('id') id: string) {
-      return `we update the dog with the id ${id}`;
+  update(@Param('id') id: string, @Body() dogDto: JobDto) {
+    return this.jobRepository.updateJob(id, dogDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-      return `we delete the dog with the id ${id}`;
+    return this.jobRepository.removeJob(id);
   }
 }

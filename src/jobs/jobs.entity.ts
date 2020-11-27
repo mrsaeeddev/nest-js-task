@@ -5,10 +5,10 @@ export class Job {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({length: 50})
+    @Column({length: 50, nullable: true})
     title: string;
 
-    @Column({length: 50})
+    @Column({length: 50, unique: true})
     companyName: string;
 
     @Column({length: 300})
