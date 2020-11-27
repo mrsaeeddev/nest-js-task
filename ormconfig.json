@@ -1,0 +1,20 @@
+{
+  "type": "postgres",
+  "host": "127.0.0.1",
+  "port": 5432,
+  "username": "postgres",
+  "password": "mysecretpassword",
+  "database": "my_database",
+  "entities": [
+    "**/*.entity{.ts,.js}"
+  ],
+  "synchronize": true,
+  "migrationsTableName": "migration",
+  "migrations": [
+    "src/migration/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/migration"
+  },
+  "ssl": false
+}
