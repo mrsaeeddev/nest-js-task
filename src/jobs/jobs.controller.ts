@@ -29,7 +29,10 @@ export class JobsController {
     return this.jobRepository.findOneJob(id);
   }
 
-  
+  @Post(':id/apply')
+  apply(@Param('id') id: string, @Body() dogDto: JobDto) {
+    return this.jobRepository.updateJob(id, dogDto);
+  }  
 
 
   @Put(':id')

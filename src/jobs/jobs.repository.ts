@@ -4,9 +4,15 @@ import { JobDto } from './jobs.dto';
 
 @EntityRepository(Job)
 export class JobRepository extends Repository<Job> {
+
   createDog = async (jobDto: JobDto) => {
     return await this.save(jobDto);
   };
+
+  applyJob = async (id: string) => {
+   console.log(id)
+  };
+
   findOneJob = async (id: string) => {
     return this.findOneOrFail(id);
   };
