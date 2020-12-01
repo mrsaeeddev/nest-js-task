@@ -9,7 +9,6 @@ export class JobsController {
     @InjectRepository(JobRepository) private readonly jobRepository: JobRepository,
   ) {}
 
-
   @Get()
   findAll() {
     return this.jobRepository.find();

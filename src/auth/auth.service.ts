@@ -17,6 +17,10 @@ export class AuthService {
     return null;
   }
 
+  async register(userdata: any) {
+    await this.usersService.create(userdata);
+  }
+
   async login(user: any) {
     const payload = { username: user.username, sub: user.userId };
     return {
