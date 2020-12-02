@@ -4,4 +4,5 @@ export class JobDto {
     readonly description: string;
     readonly status: number;
     readonly locationCoords: number;
+    readonly userId: number;
 }

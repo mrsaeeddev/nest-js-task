@@ -30,8 +30,8 @@ export class JobsController {
   }
 
   @Post(':id/apply')
-  apply(@Param('id') id: string, @Body() dogDto: JobDto) {
-    return this.jobRepository.updateJob(id, dogDto);
+  apply(@Param('id') id: string,@Body()  body: object[]) {
+    return this.jobRepository.applyJob(id, body)
   }  
 
 

@@ -2,6 +2,9 @@ import { Job } from './jobs.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { JobDto } from './jobs.dto';
 
+interface body {
+  [key: string]: any  
+}
 @EntityRepository(Job)
 export class JobRepository extends Repository<Job> {
 
@@ -9,8 +12,13 @@ export class JobRepository extends Repository<Job> {
     return await this.save(jobDto);
   };
 
-  applyJob = async (id: string) => {
-   console.log(id)
+  applyJob = async (id: string, body: body) => {
+    let job = await this.findOne(id);
+    if (job) {
+      job.user = body.userId
+      this.save(job)
+    }
+    return job
   };
 
   findOneJob = async (id: string) => {
