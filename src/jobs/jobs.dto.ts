@@ -3,6 +3,6 @@ export class JobDto {
     readonly companyName: string;
     readonly description: string;
     readonly status: number;
-    readonly locationCoords: number;
+    readonly locationCoords: object;
     readonly userId: number;
 }

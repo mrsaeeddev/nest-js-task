@@ -21,7 +21,10 @@ export class Job {
     @Column()
     status: number;
 
-    @Column()
-    locationCoords: number;
+    @Column({default: 0})
+    long: number;
+
+    @Column({default: 0})
+    lat: number;
 }
 

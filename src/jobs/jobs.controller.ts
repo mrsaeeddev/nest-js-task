@@ -34,6 +34,10 @@ export class JobsController {
     return this.jobRepository.applyJob(id, body)
   }  
 
+  @Post('/nearby')
+  nearby(@Body()  body: object[]) {
+    return this.jobRepository.findNearby(body)
+  }  
 
   @Put(':id')
   update(@Param('id') id: string, @Body() dogDto: JobDto) {
