@@ -1,9 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Users } from '../users/users.entity';
 
 @Entity()
 export class Job {
     @PrimaryGeneratedColumn()
     id: number;
+
+    @ManyToOne(type => Users, user => user.job, { cascade: ['insert', 'update'] ,eager: true })
+    user:Promise<Users[]>
 
     @Column({length: 50, nullable: true})
     title: string;
@@ -17,7 +21,10 @@ export class Job {
     @Column()
     status: number;
 
-    @Column()
-    locationCoords: number;
+    @Column({default: 0})
+    long: number;
+
+    @Column({default: 0})
+    lat: number;
 }
 

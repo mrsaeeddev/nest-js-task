@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Job } from '../jobs/jobs.entity'
 @Entity("users")
 export class Users {
     @PrimaryGeneratedColumn()
@@ -13,5 +13,8 @@ export class Users {
 
     @Column({type:'varchar', length: 50, unique: true})
     email: string;
+
+    @OneToMany(()=>Job,job=>job.user)
+    job:Promise<Job[]>
 }
 
