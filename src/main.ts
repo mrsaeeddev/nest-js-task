@@ -9,7 +9,7 @@ async function bootstrap() {
   .setTitle('NestJS Jobs App')
   .setDescription('API description')
   .setVersion('1.0')
-  .addTag('endpoints:')
+  .addTag('endpoints')
   .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
