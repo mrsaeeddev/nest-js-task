@@ -40,8 +40,8 @@ export class JobsController {
   }  
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() dogDto: JobDto) {
-    return this.jobRepository.updateJob(id, dogDto);
+  update(@Param('id') id: string, @Body() jobDto: JobDto) {
+    return this.jobRepository.updateJob(id, jobDto);
   }
 
   @Delete(':id')
