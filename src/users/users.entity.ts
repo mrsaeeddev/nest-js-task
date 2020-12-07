@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert } from 'typeorm';
+import {hash, compare} from 'bcrypt'
 import { Job } from '../jobs/jobs.entity'
 @Entity("users")
 export class Users {
@@ -16,5 +17,14 @@ export class Users {
 
     @OneToMany(()=>Job,job=>job.user)
     job:Promise<Job[]>
+
+    @BeforeInsert()
+    async hashPassword() {
+      this.password = await hash(this.password, 10);
+    }
+  
+    async comparePassword(attempt: string): Promise<boolean> {
+      return await compare(attempt, this.password);
+    }
 }
 
