@@ -11,7 +11,6 @@ export class JobRepository extends Repository<Job> {
 
   createDog = async (jobDto: JobDto) => {
     return await this.save(jobDto);
-  
   };
 
   applyJob = async (id: string, body: body) => {
@@ -25,7 +24,7 @@ export class JobRepository extends Repository<Job> {
 
   findNearby = async (body: body) => {
     let nearbyjobs =  await this.find()
-    let newjobs = nearbyjobs.map(job=> ({ ...job,     distance : getDistance(job.lat, job.long, body.lat, body.long)  }))
+    let newjobs = nearbyjobs.map(job=> ({ ...job, distance : getDistance(job.lat, job.long, body.lat, body.long)  }))
     newjobs.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
     newjobs = newjobs.filter(item => parseInt(item.distance) < 1200 );
     return newjobs

@@ -34,6 +34,7 @@
     "@nestjs/swagger": "^4.7.5",
     "@nestjs/typeorm": "^7.1.5",
     "@types/passport-local": "^1.0.33",
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
